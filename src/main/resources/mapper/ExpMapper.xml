@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="exp">
+	<resultMap type="ExpEntity" id="ExpResultMap">
+		<id property="id" column="id" />
+		<id property="name" column="name" />
+		<id property="owner" column="owner" />
+		<id property="content" column="content" />
+		<id property="pic" column="pic" />
+		<id property="cover" column="cover" />
+		<id property="gmtCreate" column="gmt_create" />
+	</resultMap>
+	
+	<select id="getExpById" resultMap="ExpResultMap">
+	<![CDATA[
+		SELECT * from t_exp where id = #{id}
+	]]>
+	</select>
+	
+	<select id="getAllExps" 
+		resultMap="ExpResultMap">
+	<![CDATA[
+		SELECT * from t_exp order by gmt_create
+	]]>
+	</select>
+	
+	<insert id="insertExp" parameterType="ExpEntity">
+		<selectKey resultType="int" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+		insert into t_exp
+		(
+	      name
+	   	  ,owner
+	   	  ,content
+	   	  ,pic
+	   	  ,cover
+	   	  ,gmt_create
+	   	)
+	      values
+	    (
+	   	  #{name}
+	   	  ,#{owner}
+	   	  ,#{content}
+	   	  ,#{pic}
+	   	  ,#{cover}
+	   	  ,#{gmtCreate}
+	    )
+	</insert>
+</mapper>

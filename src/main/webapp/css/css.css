@@ -1,0 +1,19 @@
+﻿.navbar-wrapper {position: absolute;top: 0;right: 0;left: 0;z-index: 20;}
+body {background: #efeee4;}
+.header {background: #222;background-repeat: no-repeat;background-position: center 0;background-size: cover;padding: 138px 0 0;text-align: center;min-height: 400px;position: relative;}
+.logotxt {color: #fff;margin-top: 50px;}
+.logotxt a{color: #fff;font-weight: 700;font-size: 48px;}
+.logotxt a:hover{color: #fff;text-decoratoin:underline;}
+.common-wrap{margin-top:100px;}
+.main {margin-top: 4em;}
+.post{position: relative;margin-bottom: 30px;-webkit-box-shadow: 0 0 20px rgba(50,50,50,.1);box-shadow: 0 0 20px rgba(50,50,50,.1);}
+.post-featured-image {position: relative;}
+.post-header {position: absolute;bottom: 0;width: 100%;background-color: #fff;opacity: .95;filter: alpha(opacity=95);text-align: center;}
+.post-featured-image .thumbnail {margin-bottom: 0;padding: 12px;border-top-right-radius: 0;border-top-left-radius: 0;border-bottom-right-radius: 0;border-bottom-left-radius: 0;border: none;}
+.post-header h3 {margin: 0;padding: .5em .2em;}
+.post-header h3 a {color: #777;}
+/*768*/
+@media (min-width: 768px) 
+{
+	.navbar-wrapper {margin-top: 20px;}
+}

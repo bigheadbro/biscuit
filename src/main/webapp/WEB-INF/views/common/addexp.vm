@@ -1,0 +1,123 @@
+#set($layout = "/layout/index_layout.vm")
+<link rel="stylesheet" href="/css/uploadify.css">
+<script type="text/javascript" src="/js/jquery.uploadify.min.js"></script>
+<div class="common-wrap">
+    <div class="container">
+        <form role="form" class="form-horizontal" id="form_newexp" method="post">
+            <!-- 隐藏字段，用于标示是表单提交 -->
+            <input type="hidden" name="do_submit" value="true"/>
+            #springBind("form.cover")
+			<input type="hidden" name="${status.expression}" id="productCover" />
+            <div class="form-group">
+                <label for="expname" class="col-sm-1 control-label">实验名</label>
+    			<div class="col-sm-10">
+                    #springBind("form.name")
+                    <input type="text" name="${status.expression}" class="form-control" id="expname" placeholder="此次饼干试验的名字">
+    			</div>
+            </div>
+            <div class="form-group">
+                <label for="expowner" name="${status.expression}" class="col-sm-1 control-label">作者</label>
+    			<div class="col-sm-10">
+                    #springBind("form.owner")
+                    <input type="text" name="${status.expression}" class="form-control" id="expowner" placeholder="实验人的名字">
+    			</div>
+            </div>
+            <div class="form-group" class="col-sm-1 control-label">
+                <label for="exptime" class="col-sm-1 control-label">时间</label>
+    			<div class="col-sm-10">
+                    #springBind("form.gmtCreate")
+                    <input type="text" name="${status.expression}" class="form-control" id="exptime" placeholder="做实验的日期,2015.01.03">
+    			</div>
+            </div>
+            <div class="form-group">
+    			<label for="expcontent" class="col-sm-1 control-label">描述</label>
+    			<div class="col-sm-10">
+                    #springBind("form.content")
+                    <textarea name="${status.expression}" class="form-control" id="content" rows="10"></textarea>
+    			</div>
+            </div>
+            <div class="form-group">
+				<label for="exppic" class="col-sm-1 control-label">图片</label>
+				#springBind("form.pic")
+				<input type="hidden" name="${status.expression}" id="product_pic" />
+    			<div class="col-sm-10">
+                    <input type="file" name="productlink" id="file_upload"/>
+				</div>
+            </div>
+			<div class="form-group">
+               <div class="col-sm-offset-1 col-sm-10">
+					<button type="submit" class="btn btn-default">添加</button>
+			   </div>
+			</div>
+    	</form>
+	</div>
+</div>
+<script>
+	var upCnt =20;
+	$(function() {
+		
+		$("body").on("click", ".del", delPic);
+		$("body").on("click", ".cover", setCover);
+    	function loadProduct(data){
+    		$(".uploadify-queue-item").each(function(){
+    			var pn = data.split("/")[1];
+    			if(pn.substr(0,15) == $(this).children(".fileName").text().split(" ")[0].substr(0,15)){
+    				$(this).empty();
+    				$(this).append("<img class='product-tn' src='/expimg/" + data + "' /><div class='buttons'><a class='del'>删除</a><label class='cover' for='" + data + "'><input origin='"+data+"' type='radio' id='" + data + "'/>设为封面</label></div>");
+					$("#product_pic").val($("#product_pic").val()+"|"+data);
+    			}
+    		});
+    	}
+    	function setCover(){
+    		$(".cover").each(function(){
+    			$(this).children("[type=radio]").prop('checked', false);
+    		});
+    		$(this).children("[type=radio]").prop('checked', true);
+    		$("#productCover").val($(this).children("[type=radio]").attr("origin"));
+    	}
+    	function delPic(){
+    		upCnt = upCnt + 1;
+    		$('#file_upload').uploadify('settings','uploadLimit',upCnt);
+    		$(this).parent().parent().remove();
+    		var picAll = "";
+    		$(".cover").each(function(){
+    			picAll = picAll + "|" + $(this).attr("for");
+    		});		
+    		$("#product_pic").val(picAll);
+    	}
+		$("#file_upload").uploadify({  
+          	'height'        : 30,   
+          	'width'         : 120,    
+			'buttonText'    : '选择图片',
+			'fileSizeLimit' : '5MB',
+       	   	'fileObjName'   : 'productlink',
+          	'swf'           : '/js/uploadify.swf',  
+          	'uploader'      : '/uploadexp',  
+          	'auto'          : true,  
+			'removeCompleted': false,
+			'fileTypeExts'  : '*.jpg;*.png;*.gif;*',  
+			'uploadLimit'   : 20, 
+          	'onUploadSuccess':function(file, data, response){   
+				if(data == ""){
+					showAlert("上传失败", "文件类型必须是png，jpg或者gif", "", "确定", "#")
+				}
+          		loadProduct(data);
+          	},  
+			'overrideEvents': 'onSelectError',
+			'onSelectError' : function(file, errorCode, errorMsg) {
+      			if(errorCode == SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE){
+              		this.queueData.errorMsg = "不能传空文件!!";
+              	}
+      			if(errorCode == SWFUpload.QUEUE_ERROR.UPLOAD_LIMIT_EXCEEDED){
+              		this.queueData.errorMsg = "只能上传一个文件!!";
+              	}
+      			if(errorCode == SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT){
+              		this.queueData.errorMsg = "文件大小不能超过5MB!!";
+              	}
+      			if(errorCode == SWFUpload.QUEUE_ERROR.INVALID_FILETYPE){
+              		this.queueData.errorMsg = "不支持该文件类型!!";
+              	}
+      		}
+		});
+  });  
+</script>

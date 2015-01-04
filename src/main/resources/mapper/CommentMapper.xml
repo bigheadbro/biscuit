@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="comment">
+	<resultMap type="CommentEntity" id="CommentResultMap">
+	  <!---->
+		<id property="id" column="id" />
+		<id property="content" column="content" />
+		
+		<id property="expid" column="expid" />
+		<id property="owner" column="owner" />
+		<id property="gmtCreate" column="gmt_create" />
+	</resultMap>
+
+	
+	<select id="getCommentsByExpid" parameterType="int"
+		resultMap="CommentResultMap">
+	<![CDATA[
+		SELECT * from t_comment t WHERE t.expid = #{expid} order by gmt_create
+	]]>
+	</select>
+
+	<insert id="insertCommentEntity" parameterType="CommentEntity">
+		<selectKey resultType="int" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+		insert into t_comment
+		(
+		content
+		,owner
+		,expid
+		,gmt_create)
+		values
+		(
+		#{content}
+		,#{owner}
+		,#{expid}
+		,#{gmtCreate}
+		)
+
+	</insert>
+</mapper>

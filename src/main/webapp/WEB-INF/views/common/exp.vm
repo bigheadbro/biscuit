@@ -1,0 +1,6 @@
+#set($layout = "/layout/index_layout.vm")
+<div class="common-wrap">
+    <div class="container">
+       <h1></h1>
+	</div>
+</div>

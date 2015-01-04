@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	#parse("/control/header.vm")
+	<body>
+		<div class="wrap">
+			#parse("/control/nav.vm")
+			$screen_content
+		</div>
+		#parse("/control/footer.vm")
+	</body>
+</html>

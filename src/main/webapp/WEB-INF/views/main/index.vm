@@ -1,0 +1,33 @@
+#set($layout = "/layout/index_layout.vm")
+<div class="header" style="background-image: url(img/index/bak.jpg)">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="logotxt">
+					<h1><a href="#">梦想饼干</a></h1>
+					<h2>饼干实验进行中...</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<main class="main" role="main">
+    <div class="container">
+        <div class="row" id="post-list">
+			#foreach($exp in $exps)
+			<div class="col-xs-12 col-md-6 col-lg-6">
+                <article class="post tag-ad">
+                    <section class="post-featured-image">
+                        <a class="thumbnail" href="/exp/${exp.id}" target="_blank">
+                          <img src="/expimg/${exp.cover}" width="800" height="600" alt="${exp.name}" style="display: block;">
+                        </a>
+                    </section>
+                    <header class="post-header">
+                        <h3 class="post-title"><a href="/exp/${exp.id}">${exp.name}</a></h3>
+					</header>
+                </article>
+            </div>
+			#end
+		</div>
+	</div>
+</main>
