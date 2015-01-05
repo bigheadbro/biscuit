@@ -1,6 +1,18 @@
 #set($layout = "/layout/index_layout.vm")
 <div class="common-wrap">
     <div class="container">
-       <h1></h1>
-	</div>
+		<div class="row" id="post-list">
+            <div class="main-panel col-md-8">
+                <div class="exp-head">
+                    <h1>${exp.name}</h1>
+                    <img src="/expimg/${exp.cover}" />
+                </div>
+                <h4>实验者：${exp.owner}</h4>
+                <p>${exp.content}</p>
+            </div>
+    		<div class="right-panel col-md-4">
+				<h1></h1>
+    		</div>
+		</div>
+    </div>
 </div>

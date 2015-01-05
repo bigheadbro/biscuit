@@ -54,6 +54,24 @@ public class CommonController extends BaseController{
 		return mv;
 	}
 	
+	@RequestMapping(value="/squad")
+	public ModelAndView squad(final HttpServletRequest request,final HttpServletResponse response)
+	{
+		ModelAndView mv = new ModelAndView("/common/squad");
+		List<ExpEntity> exps = commonService.getAllExps();
+		mv.addObject("exps",exps);
+		return mv;
+	}
+	
+	@RequestMapping(value="/exps")
+	public ModelAndView exps(final HttpServletRequest request,final HttpServletResponse response)
+	{
+		ModelAndView mv = new ModelAndView("/common/exps");
+		List<ExpEntity> exps = commonService.getAllExps();
+		mv.addObject("exps",exps);
+		return mv;
+	}
+	
 	@RequestMapping(value="/exp/{id}")
 	public ModelAndView exp(final HttpServletRequest request,final HttpServletResponse response, @PathVariable String id)
 	{

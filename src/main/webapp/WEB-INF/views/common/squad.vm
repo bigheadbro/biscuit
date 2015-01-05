@@ -1,0 +1,7 @@
+#set($layout = "/layout/index_layout.vm")
+<div class="common-wrap">
+    <div class="container">
+       <h1>${exp.name}</h1>
+	   <h3>${exp.owner}</h3>
+	</div>
+</div>

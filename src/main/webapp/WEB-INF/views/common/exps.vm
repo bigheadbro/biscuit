@@ -1,17 +1,5 @@
 #set($layout = "/layout/index_layout.vm")
-<div class="header" style="background-image: url(img/index/bak.jpg)">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="logotxt">
-					<h1><a href="#">梦想饼干</a></h1>
-					<h2>有梦想吃饼干！</h2>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<main class="main" role="main">
+<main class="common-main" role="main">
     <div class="container">
         <div class="row" id="post-list">
 			#foreach($exp in $exps)

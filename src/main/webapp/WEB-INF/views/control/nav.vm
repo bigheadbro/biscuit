@@ -24,13 +24,13 @@
                                 <a href="/index">首页</a>
                             </li>
                         #end
-                        #if($!stringUtil.isContains($request.getServletPath(),"/addexp"))
+                        #if($!stringUtil.isContains($request.getServletPath(),"/addexp") || $!stringUtil.isContains($request.getServletPath(),"/exp"))
                             <li class="dropdown active">
                                 <a href="/exps" class="dropdown-toggle" data-toggle="dropdown">实验<span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="/">查看实验</a>
+                                        <a href="/exps">查看实验</a>
                                     </li>
                                     <li>
                                         <a href="/addexp">添加实验</a>
@@ -43,7 +43,7 @@
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="/">查看实验</a>
+                                        <a href="/exps">查看实验</a>
                                     </li>
                                     <li>
                                         <a href="/addexp">添加实验</a>
@@ -51,12 +51,15 @@
                                 </ul>
                             </li>
 						#end
-						 <li>
-                            <a href="#">无限创意</a>
+						#if($!stringUtil.isContains($request.getServletPath(),"/squad"))
+                        <li class="active">
+                            <a href="/squad">实验小分队</a>
                         </li>
-                        <li>
-                            <a href="#">实验小分队</a>
+						#else
+						<li>
+                            <a href="/squad">实验小分队</a>
                         </li>
+						#end
                     </ul>
                     <div class="nav navbar-nav navbar-right">
                         <form class="navbar-form navbar-left">
