@@ -10,7 +10,7 @@
     						<img src="/expimg/${exp.cover}" />
     					</div>
     					 <h4>实验者：${exp.owner}</h4>
-						 <h4>配方：<a href="/recipe/${recipe.id}" target="_blank"></a></h4>
+						 <h4>配方：<a href="/recipe/${recipe.id}" target="_blank">${recipe.name}</a></h4>
                     </div>
     				<article class="exp-sep">
     					<h3>步骤</h3>
