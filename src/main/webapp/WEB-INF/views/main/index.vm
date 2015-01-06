@@ -11,14 +11,14 @@
 		</div>
 	</div>
 </div>
-<main class="main" role="main">
+<main class="common-main" role="main">
     <div class="container">
         <div class="row" id="post-list">
 			#foreach($exp in $exps)
 			<div class="col-xs-12 col-md-6 col-lg-6">
                 <article class="post tag-ad">
                     <section class="post-featured-image">
-                        <a class="thumbnail" href="/exp/${exp.id}" target="_blank">
+                        <a class="thumbnail item-wrap" href="/exp/${exp.id}" target="_blank">
                           <img src="/expimg/${exp.cover}" width="800" height="600" alt="${exp.name}" style="display: block;">
                         </a>
                     </section>

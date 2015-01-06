@@ -1,0 +1,17 @@
+#set($layout = "/layout/index_layout.vm")
+<main class="common-main" role="main">
+    <div class="container">
+        <div class="row" id="post-list">
+            <div class="col-md-8">
+				<div class="list-group">
+    				#foreach($recipe in $recipes)
+    				<a href="/recipe/${recipe.id}" class="list-group-item">${recipe.name}</a>
+    				#end
+				</div>
+            </div>
+    		<div class="right-panel col-md-4">
+				<h1></h1>
+    		</div>
+		</div>
+	</div>
+</main>

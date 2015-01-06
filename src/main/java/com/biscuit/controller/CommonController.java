@@ -26,7 +26,9 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.biscuit.util.StringUtil;
 import com.biscuit.entity.ExpEntity;
+import com.biscuit.entity.RecipeEntity;
 import com.biscuit.form.ExpForm;
+import com.biscuit.form.RecipeForm;
 import com.biscuit.service.CommonService;
 import com.biscuit.util.Util;
 
@@ -78,7 +80,11 @@ public class CommonController extends BaseController{
 		int eid = Integer.valueOf(id);
 		ModelAndView mv = new ModelAndView("/common/exp");
 		ExpEntity exp = commonService.getExpById(eid);
+		RecipeEntity recipe = commonService.getRecipeById(exp.getRid());
+		exp.setContent(StringUtil.convertEnterForHtml(exp.getContent()));
 		mv.addObject("exp",exp);
+		mv.addObject("recipe",recipe);
+		mv.addObject("pics",exp.getPic().split("[|]"));
 		return mv;
 	}
 	
@@ -86,6 +92,8 @@ public class CommonController extends BaseController{
 	public ModelAndView addexp(final HttpServletRequest request,final HttpServletResponse response, @ModelAttribute("form")ExpForm form, BindingResult result)
 	{
 		ModelAndView mv = new ModelAndView("/common/addexp");
+		List<RecipeEntity> recipes = commonService.getAllRecipes();
+		mv.addObject("recipes",recipes);
 		if(isDoSubmit(request))
 		{
 			logger.debug("Add exp to DB");
@@ -125,5 +133,39 @@ public class CommonController extends BaseController{
 
 		return responseStr;
 	}
+	
+	@RequestMapping(value="/recipes")
+	public ModelAndView recipes(final HttpServletRequest request,final HttpServletResponse response)
+	{
+		ModelAndView mv = new ModelAndView("/common/recipes");
+		List<RecipeEntity> recipes = commonService.getAllRecipes();
+		mv.addObject("recipes",recipes);
+		return mv;
+	}
+	
+	@RequestMapping(value="/recipe/{id}")
+	public ModelAndView recipe(final HttpServletRequest request,final HttpServletResponse response, @PathVariable String id)
+	{
+		int rid = Integer.valueOf(id);
+		ModelAndView mv = new ModelAndView("/common/recipe");
+		RecipeEntity recipe = commonService.getRecipeById(rid);
+		recipe.setContent(StringUtil.convertEnterForHtml(recipe.getContent()));
+		mv.addObject("recipe",recipe);
+		return mv;
+	}
+	
+	@RequestMapping(value="/addrecipe")
+	public ModelAndView addrecipe(final HttpServletRequest request,final HttpServletResponse response, @ModelAttribute("form")RecipeForm form, BindingResult result)
+	{
+		ModelAndView mv = new ModelAndView("/common/addrecipe");
+		if(isDoSubmit(request))
+		{
+			logger.debug("Add recipe to DB");
+			commonService.addRecipe(form);
+		}
+		return mv;
+	}
+	
+	
 	
 }

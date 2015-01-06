@@ -22,6 +22,30 @@
                     <input type="text" name="${status.expression}" class="form-control" id="expowner" placeholder="实验人的名字">
     			</div>
             </div>
+			<div class="form-group">
+                <label for="expowner" name="${status.expression}" class="col-sm-1 control-label">配方</label>
+    			<div class="col-sm-10">
+					#springBind("form.rid")
+					<input type="hidden" name="${status.expression}" id="rid" />
+					<select class="combobox form-control">
+						<option></option>
+						#foreach($recipe in $recipes)
+							<option class="option" value="${recipe.id}">${recipe.name}</option>
+						#end
+                    </select>
+                    <script type="text/javascript">
+                      	$(document).ready(function(){
+                      		$('.combobox').combobox();
+							
+                      	});
+						$(function(){
+							$(".combobox").change(function(){
+								$("#rid").val($(this).val());
+							});
+						});
+                    </script>
+    			</div>
+            </div>
             <div class="form-group" class="col-sm-1 control-label">
                 <label for="exptime" class="col-sm-1 control-label">时间</label>
     			<div class="col-sm-10">

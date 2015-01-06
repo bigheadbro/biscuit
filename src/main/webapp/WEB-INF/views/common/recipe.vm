@@ -1,0 +1,18 @@
+#set($layout = "/layout/index_layout.vm")
+<div class="common-wrap">
+    <div class="container">
+		<div class="row" id="post-list">
+            <div class="col-md-8">
+				<section class="main-panel">
+    				<article>
+    					<h3>${recipe.name}</h3>
+    					<p>${recipe.content}</p>
+    				</article>
+				</section>
+            </div>
+    		<div class="right-panel col-md-4">
+				<h1></h1>
+    		</div>
+		</div>
+    </div>
+</div>

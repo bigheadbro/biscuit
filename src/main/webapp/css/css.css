@@ -19,8 +19,18 @@ body {background: #efeee4;}
 	.navbar-wrapper {margin-top: 20px;}
 }
 
+.exp-sep{border-bottom:1px solid #ddd;padding-bottom:20px;margin-bottom:20px;}
 .exp-head{}
 .exp-head img{width:100%}
-
-.main-panel{background-color:white;}
+.exp-head .cover-wrap{max-height:400px;overflow:hidden;}
+.item-wrap{max-height: 400px;overflow: hidden;}
+.main-panel{background-color:white;padding: 15px;}
 .right-panel{}
+
+.member{}
+.member h2{float:left;}
+.member h2 img,.member-reverse h2 img{border-radius:50%;border:5px solid white;width:100px;}
+.member .single-story blockquote,.member-reverse .single-story blockquote{margin-bottom:0}
+.member .single-story,.member-reverse .single-story{float:left;background-color:white;border-radius:5px;margin-top:40px;margin-bottom:10px;margin-left: 30px;padding: 10px;color: #7491A8;}
+.member-reverse h2{float:right;}
+.member-reverse .single-story{float:right;margin-right:30px;}

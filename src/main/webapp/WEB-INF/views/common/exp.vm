@@ -2,13 +2,35 @@
 <div class="common-wrap">
     <div class="container">
 		<div class="row" id="post-list">
-            <div class="main-panel col-md-8">
-                <div class="exp-head">
-                    <h1>${exp.name}</h1>
-                    <img src="/expimg/${exp.cover}" />
-                </div>
-                <h4>实验者：${exp.owner}</h4>
-                <p>${exp.content}</p>
+            <div class="col-md-8">
+				<section class="main-panel">
+                    <div class="exp-head exp-sep">
+                        <h2>${exp.name}</h2>
+    					<div class="cover-wrap">
+    						<img src="/expimg/${exp.cover}" />
+    					</div>
+    					 <h4>实验者：${exp.owner}</h4>
+						 <h4>配方：<a href="/recipe/${recipe.id}" target="_blank"></a></h4>
+                    </div>
+    				<article class="exp-sep">
+    					<h3>步骤</h3>
+    					<p>${exp.content}</p>
+    				</article>
+					<article>
+						<h3>实验花絮</h3>
+    					<div class="row">
+    						#foreach($pic in $pics)
+        						#if($stringUtil.isNotEmpty($pic))
+    								<div class="col-md-4">
+                                        <a href="#" class="thumbnail">
+                                          <img src="/expimg/$pic" />
+                                        </a>
+    								</div>
+    							#end
+    						#end
+                        </div>
+					</article>
+				</section>
             </div>
     		<div class="right-panel col-md-4">
 				<h1></h1>

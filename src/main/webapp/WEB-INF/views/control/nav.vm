@@ -23,32 +23,23 @@
                             <li>
                                 <a href="/index">首页</a>
                             </li>
-                        #end
-                        #if($!stringUtil.isContains($request.getServletPath(),"/addexp") || $!stringUtil.isContains($request.getServletPath(),"/exp"))
-                            <li class="dropdown active">
-                                <a href="/exps" class="dropdown-toggle" data-toggle="dropdown">实验<span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="/exps">查看实验</a>
-                                    </li>
-                                    <li>
-                                        <a href="/addexp">添加实验</a>
-                                    </li>
-                                </ul>
+						#end
+						#if($!stringUtil.isContains($request.getServletPath(),"/recipe"))
+                            <li class="active">
+                                <a href="/recipes">饼干配方</a>
                             </li>
                         #else
-							<li class="dropdown">
-                                <a href="/exps" class="dropdown-toggle" data-toggle="dropdown">实验<span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="/exps">查看实验</a>
-                                    </li>
-                                    <li>
-                                        <a href="/addexp">添加实验</a>
-                                    </li>
-                                </ul>
+                            <li>
+                                <a href="/recipes">饼干配方</a>
+                            </li>
+						#end
+                        #if($!stringUtil.isContains($request.getServletPath(),"/exp"))
+                            <li class="active">
+                                <a href="/exps">实验</a>
+                            </li>
+                        #else
+                            <li>
+                                <a href="/exps">实验</a>
                             </li>
 						#end
 						#if($!stringUtil.isContains($request.getServletPath(),"/squad"))
@@ -58,6 +49,33 @@
 						#else
 						<li>
                             <a href="/squad">实验小分队</a>
+                        </li>
+						#end
+						#if($!stringUtil.isContains($request.getServletPath(),"/addexp") || $!stringUtil.isContains($request.getServletPath(),"/addrecipe"))
+						<li class="dropdown active">
+                            <a href="/exps" class="dropdown-toggle" data-toggle="dropdown">管理员添加<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="/addexp">添加实验</a>
+                                </li>
+                                <li>
+                                    <a href="/addrecipe">添加方子</a>
+                                </li>
+                            </ul>
+                        </li>
+						#else
+						<li class="dropdown">
+                            <a href="/exps" class="dropdown-toggle" data-toggle="dropdown">管理员添加<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="/addexp">添加实验</a>
+                                </li>
+                                <li>
+                                    <a href="/addrecipe">添加方子</a>
+                                </li>
+                            </ul>
                         </li>
 						#end
                     </ul>

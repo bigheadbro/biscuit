@@ -518,6 +518,11 @@ public class StringUtil {
 		return str;
 	}
 	
+	public static String convertEnterForHtml(String str)
+	{
+		return str.replace("\r\n", "<br/>");
+	}
+	
 	public static String fileType(String type)
 	{
 		return type.substring(1);

@@ -1,52 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="exp">
-	<resultMap type="ExpEntity" id="ExpResultMap">
+<mapper namespace="recipe">
+	<resultMap type="RecipeEntity" id="RecipeResultMap">
 		<id property="id" column="id" />
-		<id property="rid" column="rid" />
 		<id property="name" column="name" />
-		<id property="owner" column="owner" />
 		<id property="content" column="content" />
-		<id property="pic" column="pic" />
-		<id property="cover" column="cover" />
 		<id property="gmtCreate" column="gmt_create" />
 	</resultMap>
 	
-	<select id="getExpById" resultMap="ExpResultMap">
+	<select id="getRecipeById" resultMap="RecipeResultMap">
 	<![CDATA[
-		SELECT * from t_exp where id = #{id}
+		SELECT * from t_recipe where id = #{id}
 	]]>
 	</select>
 	
-	<select id="getAllExps" 
-		resultMap="ExpResultMap">
+	<select id="getAllRecipes" 
+		resultMap="RecipeResultMap">
 	<![CDATA[
-		SELECT * from t_exp order by gmt_create
+		SELECT * from t_recipe order by gmt_create
 	]]>
 	</select>
 	
-	<insert id="insertExp" parameterType="ExpEntity">
+	<insert id="insertRecipe" parameterType="RecipeEntity">
 		<selectKey resultType="int" order="AFTER" keyProperty="id">
 			SELECT LAST_INSERT_ID() AS id
 		</selectKey>
-		insert into t_exp
+		insert into t_recipe
 		(
-		  rid
-	      ,name
-	   	  ,owner
+	      name
 	   	  ,content
-	   	  ,pic
-	   	  ,cover
 	   	  ,gmt_create
 	   	)
 	      values
 	    (
-	      #{rid}
-	   	  ,#{name}
-	   	  ,#{owner}
+	   	  #{name}
 	   	  ,#{content}
-	   	  ,#{pic}
-	   	  ,#{cover}
 	   	  ,#{gmtCreate}
 	    )
 	</insert>

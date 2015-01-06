@@ -12,6 +12,7 @@ public class ExpEntity implements Serializable
 	private int id;
 	//
 	private String name;
+	private int rid;
 	//
 	private String owner;
 	//
@@ -79,5 +80,13 @@ public class ExpEntity implements Serializable
 	public static long getSerialversionuid()
 	{
 		return serialVersionUID;
+	}
+	public int getRid()
+	{
+		return rid;
+	}
+	public void setRid(int rid)
+	{
+		this.rid = rid;
 	}
 }

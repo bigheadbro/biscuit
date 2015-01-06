@@ -1,7 +1,69 @@
 #set($layout = "/layout/index_layout.vm")
 <div class="common-wrap">
     <div class="container">
-       <h1>${exp.name}</h1>
-	   <h3>${exp.owner}</h3>
+		<div class="row">
+			<div class="col-md-8">
+				<article class="member clearfix">
+        			<h2>
+        				<img src="/img/squads/4.jpg" />
+        			</h2>
+        			<div class="single-story">
+            			<blockquote>
+            				<p>我要做出最有趣的饼干！！！</p>
+                        </blockquote>
+        			</div>
+        		</article>
+        		<article class="member-reverse clearfix">
+        			<h2>
+        				<img src="/img/squads/2.jpg" />
+        			</h2>
+        			<div class="single-story">
+            			<blockquote class="blockquote-reverse">
+            				<p>好哟，加油！！</p>
+                        </blockquote>
+        			</div>
+        		</article>
+        		<article class="member clearfix">
+        			<h2>
+        				<img src="/img/squads/3.jpg" />
+        			</h2>
+        			<div class="single-story">
+            			<blockquote>
+            				<p>我要成为饼干之王，啊啊啊啊啊啊啊啊啊啊啊啊</p>
+                        </blockquote>
+        			</div>
+        		</article>
+        		<article class="member clearfix">
+        			<h2>
+        				<img src="/img/squads/3.jpg" />
+        			</h2>
+        			<div class="single-story">
+            			<blockquote>
+            				<p>大家一起加油啊！！！</p>
+                        </blockquote>
+        			</div>
+        		</article>
+        		<article class="member-reverse clearfix">
+        			<h2>
+        				<img src="/img/squads/1.jpg" />
+        			</h2>
+        			<div class="single-story">
+            			<blockquote class="blockquote-reverse">
+            				<p>Roger that！！</p>
+                        </blockquote>
+        			</div>
+        		</article>
+        		<article class="member-reverse clearfix">
+        			<h2>
+        				<img src="/img/squads/5.jpg" />
+        			</h2>
+        			<div class="single-story">
+            			<blockquote class="blockquote-reverse">
+            				<p>九九好帅气！！</p>
+                        </blockquote>
+        			</div>
+        		</article>
+			</div>
+		</div>
 	</div>
 </div>

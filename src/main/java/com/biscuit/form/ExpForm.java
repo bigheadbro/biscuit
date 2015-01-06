@@ -5,6 +5,8 @@ public class ExpForm
 	private String name;
 	//
 	private String owner;
+	
+	private int rid;
 	//
 	private String content;
 	private String pic;
@@ -58,5 +60,13 @@ public class ExpForm
 	public void setCover(String cover)
 	{
 		this.cover = cover;
+	}
+	public int getRid()
+	{
+		return rid;
+	}
+	public void setRid(int rid)
+	{
+		this.rid = rid;
 	}
 }

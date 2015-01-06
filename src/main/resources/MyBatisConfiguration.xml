@@ -3,6 +3,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="ExpEntity" type="com.biscuit.entity.ExpEntity" />
+		<typeAlias alias="RecipeEntity" type="com.biscuit.entity.RecipeEntity" />
 		<typeAlias alias="CommentEntity" type="com.biscuit.entity.CommentEntity" />
 	</typeAliases>
 
